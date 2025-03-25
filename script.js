@@ -9,7 +9,11 @@ function searchCity() {
     //.then((res) => res.text())-> formatiert als text
     .then((data) => {
       console.log(data);
-      output.innerHTML = `<h2>${data.weather[0].avgtempC}${data.current_condition.FeelsLikeC}</h2>`;
+      output.innerHTML = `<p style="color:green;">Average temperature: ${data.weather[0].avgtempC} °C</p>
+      <p>Feels like: ${data.current_condition[0].FeelsLikeC} °C</p>`;
+    })
+    .catch((error) => {
+      output.innerHTML = `<p style="color:red;">An eror occured: ${error.message}</p>`;
     });
 }
 
